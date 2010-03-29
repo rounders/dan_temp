@@ -182,7 +182,9 @@ select{
         </div>
     </td>
   </tr>  
-</table>
+</table>                             
+
+Stock Number: <input name="vin">
 
 <!-- REMOVE ADITIONAL SEARCH OPTIONS  
 	

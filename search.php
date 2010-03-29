@@ -100,6 +100,7 @@ class RDAutosModelSearch extends JModel {
 		$transmission		= $mainframe->getUserStateFromRequest( $option.'transmission', 'transmission', '0', 'cmd' );
 		
 		## This part will pick up all the filled in values.	(INPUTBOXES)
+		$vin        		= $mainframe->getUserStateFromRequest( $option.'vin', 'vin', '0', 'string' );
 		$mileagefrom		= $mainframe->getUserStateFromRequest( $option.'mileageFrom', 'mileageFrom', '0', 'string' );
 		$mileagefrom		= JString::strtolower( $mileagefrom );	
 		$mileageto			= $mainframe->getUserStateFromRequest( $option.'mileageTo', 'mileageTo', '0', 'string' );
@@ -260,6 +261,10 @@ class RDAutosModelSearch extends JModel {
 		}	
 		if ((int)$foglights != 0){
 			$where[] = 'a.foglights = 1';
+		}
+		
+		if ($vin != ''){
+			$where[] = "a.vin = '".$vin."'";
 		}																																										
 		
 		$where 		= ( count( $where ) ? ' WHERE '. implode( ' AND ', $where ) : '' );
