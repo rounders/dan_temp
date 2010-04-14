@@ -177,10 +177,10 @@ class RDAutosModelSearch extends JModel {
 		}
 		
 		if ($pricefrom != 0){ 
-			$where[] = 'a.price > '.(int)$pricefrom; 
+		        $where[] = '(a.price - (1&&discount)*(a.price-a.discount)) > '.(int)$pricefrom;
 		}
 		if ($priceto != 0){ 
-			$where[] = 'a.price < '.(int)$priceto; 
+			$where[] = '(a.price - (1&&discount)*(a.price-discount)) < '.(int)$priceto;
 		}		
 		
 		if ($yearfrom != 0 && $yearto == 0){ 
