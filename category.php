@@ -99,6 +99,7 @@ class RDAutosModelCategory extends JModel {
 			if ($filter_order == 'a.price') {
 				$filter_order = ' (a.price - (1&&discount)*(a.price-a.discount))'; 
 			}
+			$orderby = ' ORDER BY '.$filter_order.' '.$filter_order_Dir.'';
 	 
 			return $orderby;
 	}
