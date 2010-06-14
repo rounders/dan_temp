@@ -96,7 +96,9 @@ class RDAutosModelCategory extends JModel {
 			$filter_order     = $mainframe->getUserStateFromRequest( $option.'filter_ordering', 'filter_ordering', 'a.price', 'cmd' );
 			$filter_order_Dir = $mainframe->getUserStateFromRequest( $option.'filter_order_Dir', 'filter_order_Dir', 'asc', 'word' );
 	 
-			$orderby = ' ORDER BY '.$filter_order.' '.$filter_order_Dir.'';
+			if ($filter_order == 'a.price') {
+				$filter_order = ' (a.price - (1&&discount)*(a.price-a.discount))'; 
+			}
 	 
 			return $orderby;
 	}
